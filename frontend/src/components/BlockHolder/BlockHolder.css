@@ -1,0 +1,12 @@
+
+.block-holder{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3%;
+    overflow-y: auto;
+    height: 50%;
+    width: 50%;
+    border: 5px solid rgb(216, 216, 216);
+    margin-bottom: 3%;
+    padding: 1%;
+}

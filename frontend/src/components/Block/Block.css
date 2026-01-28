@@ -1,0 +1,14 @@
+
+.block{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    max-width: 1fr;
+    aspect-ratio: 1/1;
+    border: 3px solid green;
+}
+
+.block-name{
+    font-size: 180%;
+}

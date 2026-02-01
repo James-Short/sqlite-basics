@@ -1,10 +1,10 @@
 import './Block.css'
 
-function Block(props){
+function Block({ name, id, color }){
     return(
-        <div className='block'>
-            <h1 className='block-name'>{props.name}</h1>
-            <h3 className='block-id'>{"#" + props.id}</h3>
+        <div className='block' style={{backgroundColor: color}}>
+            <h1 className='block-name'>{name}</h1>
+            <h3 className='block-id'>{"#" + id}</h3>
         </div>
     )
 }

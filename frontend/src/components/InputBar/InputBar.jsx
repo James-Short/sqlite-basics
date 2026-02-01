@@ -2,42 +2,28 @@ import { useState } from 'react';
 
 import './InputBar.css';
 
-function InputBar(){
+function InputBar({ handleAdd, handleDel}){
     const [blockName, setBlockName] = useState("");
-    const [blockID, setBlockID] = useState();
+    const [blockID, setBlockID] = useState("");
+    const [blockColor, setBlockColor] = useState("Tomato");
 
-    function updateName(update){
-        setBlockName(update);
-    }
 
-    function submitName(){
-        let selectedColor = document.querySelector(".color-select");
-        alert(selectedColor.value);
-    }
-
-    function updateID(update){
-        setBlockID(update);
-    }
-
-    function submitID(){
-        alert(blockID)
-    }
 
     return(
         <div className='input-bar'>
             <div className='add-bar'>
-                <input type="text" placeholder='Name' className='name-input' onChange={(e) => updateName(e.target.value)} value={blockName}/>
-                <select className='color-select'>
-                    <option value="Red">Red</option>
-                    <option value="Blue">Blue</option>
-                    <option value="Orange">Orange</option>
-                    <option value="Yellow">Yellow</option>
+                <input type="text" placeholder='Name' className='name-input' onChange={(e) => setBlockName(e.target.value)} value={blockName}/>
+                <select className='color-select' value={blockColor} onChange={(e) => setBlockColor(e.target.value)}>
+                    <option value="tomato">Red</option>
+                    <option value="deepskyblue">Blue</option>
+                    <option value="lightsalmon">Orange</option>
+                    <option value="lemonchiffon">Yellow</option>
                 </select>
-                <button className='add-button' onClick={submitName}>Add Block</button>
+                <button className='add-button' onClick={() => {handleAdd(blockName, blockColor); setBlockName("")}}>Add Block</button>
             </div>
             <div className='delete-bar'>
-                <input type="text" placeholder='#' className='id-input' onChange={(e) => updateID(e.target.value)} value={blockID}/>
-                <button className='delete-button' onClick={submitID}>Delete Block</button>
+                <input type="text" placeholder='#' className='id-input' onChange={(e) => setBlockID(e.target.value)} value={blockID}/>
+                <button className='delete-button' onClick={() => {handleDel(blockID); setBlockID("")}}>Delete Block</button>
             </div>
             
         </div>

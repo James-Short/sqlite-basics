@@ -13,13 +13,20 @@ db.exec(schema);
 export function execute(sql, params=[]){
     return new Promise((resolve, reject) => {
         db.run(sql, params, (err) => {
-            if(err){
-                reject(err);
-            } else{
-                resolve()
-            }
+            if(err)reject(err);
+            resolve();
+            
         });
     });
+}
+
+export function fetchAll(sql, params){
+    return new Promise((resolve, reject) => {
+        db.all(sql, params, (err, rows) => {
+            if(err) reject(err);
+            resolve(rows);
+        })
+    })
 }
 
 

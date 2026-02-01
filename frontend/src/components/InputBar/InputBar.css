@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 35%;
+    min-width: 650px;
     aspect-ratio: 8/1;
 }
 

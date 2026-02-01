@@ -1,27 +1,34 @@
 import "./db/db.js"
-import { createBlock, deleteBlock } from "./db/queries.js";
+import { createBlock, deleteBlock, fetchAllBlocks } from "./db/queries.js";
 import express from "express";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
-app.post("/submitBlockAddition", async (req, res) => {
+app.post("/SubmitBlockAddition", async (req, res) => {
     const { name, color } = req.body;
 
     await createBlock(name, color);
 
-    console.log(name, color);
-    res.send("All done");
+    
+    res.send(await fetchAllBlocks());
 })
 
-app.post("/submitBlockDeletion", async (req, res) => {
+app.post("/SubmitBlockDeletion", async (req, res) => {
     const { id } = req.body;
 
     await deleteBlock(id);
 
-    res.send("All done");
+    res.send(await fetchAllBlocks());
 })
+
+app.get("/FetchAllBlocks", async (req, res) => {
+    res.send(await fetchAllBlocks())
+})
+
 
 
 app.listen(8080, () => {

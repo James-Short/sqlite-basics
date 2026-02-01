@@ -1,4 +1,4 @@
-import { execute } from './db.js'
+import { execute, fetchAll } from './db.js'
 
 export async function createBlock(name, color){
     await execute(
@@ -12,4 +12,8 @@ export async function deleteBlock(id){
         "DELETE FROM blocks WHERE id = ?",
         [id]
     );
+}
+
+export async function fetchAllBlocks(){
+    return(await fetchAll("SELECT * FROM blocks", []))
 }

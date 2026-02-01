@@ -4,11 +4,11 @@
     flex-direction: column;
     overflow: hidden;
     align-items: center;
-    max-width: 1fr;
+    max-width: 0.5fr;
     aspect-ratio: 1/1;
-    border: 3px solid green;
+    padding: 2%;
 }
 
 .block-name{
-    font-size: 180%;
+    font-size: 1.4em;
 }
